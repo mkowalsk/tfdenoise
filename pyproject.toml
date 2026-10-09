@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tfdenoise"
+version = "0.1.0"
+description = "Débruitage audio par seuillage temps-fréquence, en PyTorch, sous bruit blanc gaussien"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "BSD-3-Clause"
+license-files = ["LICENSE"]
+authors = [{ name = "Matthieu Kowalski", email = "matthieu.kowalski@gmail.com" }]
+dependencies = ["torch>=2.1"]
+
+[project.optional-dependencies]
+# Dépendances du notebook seul, inutiles à l'import des modules.
+notebook = ["numpy", "matplotlib", "ipython", "jupyterlab"]
+
+[project.urls]
+Repository = "https://github.com/mkowalsk/tfdenoise"
+
+[tool.setuptools]
+# Deux modules à plat, importés tels quels : `from stft import STFT`,
+# `import tfdenoise`. Le notebook et le README restent valides.
+py-modules = ["stft", "tfdenoise"]
